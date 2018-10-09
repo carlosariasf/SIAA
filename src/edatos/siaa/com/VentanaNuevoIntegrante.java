@@ -10,11 +10,14 @@ import net.miginfocom.swing.MigLayout;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 import java.awt.Font;
+import java.awt.TexturePaint;
+
 import javax.swing.JRadioButton;
 import javax.swing.JComboBox;
 import javax.swing.JButton;
 import javax.swing.JMenuBar;
 import java.awt.Window.Type;
+import javax.swing.JTextPane;
 
 public class VentanaNuevoIntegrante extends JFrame {
 
@@ -53,7 +56,7 @@ public class VentanaNuevoIntegrante extends JFrame {
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
-		contentPane.setLayout(new MigLayout("", "[20px:n][][][149.00,right][30px:n]", "[20px:n][][][][][][][][][30px:n]"));
+		contentPane.setLayout(new MigLayout("", "[20px:n][][][149.00,grow,right][30px:n]", "[20px:n][][][][][][grow][][][30px:n]"));
 		
 		JLabel lblNewLabel = new JLabel("Nombres");
 		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 13));
@@ -112,9 +115,10 @@ public class VentanaNuevoIntegrante extends JFrame {
 		lblGrupoGeneral.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		contentPane.add(lblGrupoGeneral, "cell 1 6");
 		
-		JComboBox comboBox = new JComboBox();
-		comboBox.setFont(new Font("Tahoma", Font.PLAIN, 13));
-		contentPane.add(comboBox, "cell 3 6,growx");
+		JTextPane textPanelGrupo = new JTextPane();
+		textPanelGrupo.setText(NuevoGrupo.getNombreGrupo());
+		textPanelGrupo.setEditable(false);
+		contentPane.add(textPanelGrupo, "cell 3 6,grow");
 		
 		JButton btnVolver = new JButton("Atras");
 		btnVolver.setFont(new Font("Tahoma", Font.PLAIN, 13));

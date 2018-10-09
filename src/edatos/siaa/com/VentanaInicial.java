@@ -1,16 +1,18 @@
 package edatos.siaa.com;
 
-import java.awt.BorderLayout;
+
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+
 
 public class VentanaInicial extends JFrame {
 
@@ -19,7 +21,7 @@ public class VentanaInicial extends JFrame {
 	 */
 	private static final long serialVersionUID = -3401325008279193550L;
 	private JPanel contentPane;
-	private JTextField textNGrup;
+	private static JTextField textoNuevoGrupo;
 
 	/**
 	 * Launch the application.
@@ -35,6 +37,16 @@ public class VentanaInicial extends JFrame {
 				}
 			}
 		});
+		
+		
+	}
+	public boolean casillaVacia() {
+		
+		if(textoNuevoGrupo.getText().isEmpty())
+		{
+			return true;
+		}
+		return false;
 	}
 
 	/**
@@ -56,16 +68,23 @@ public class VentanaInicial extends JFrame {
 		lblNombre.setBounds(47, 94, 57, 14);
 		contentPane.add(lblNombre);
 		
-		textNGrup = new JTextField();
-		textNGrup.setBounds(116, 91, 217, 20);
-		contentPane.add(textNGrup);
-		textNGrup.setColumns(10);
+		textoNuevoGrupo = new JTextField();
+		textoNuevoGrupo.setBounds(116, 91, 217, 20);
+		contentPane.add(textoNuevoGrupo);
+		textoNuevoGrupo.setColumns(10);
 		final VentanaNuevoIntegrante estudiante=new VentanaNuevoIntegrante();
 		
 		JButton btnCrearNuevoGrupo = new JButton("Crear Nuevo Grupo");
 		btnCrearNuevoGrupo.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				estudiante.setVisible(true);
+				
+				if(!casillaVacia()) {
+					NuevoGrupo.nuevoGrupo(textoNuevoGrupo.getText().toString());
+					JOptionPane.showMessageDialog(null, "Gracias, se ha creado el grupo " + NuevoGrupo.getNombreGrupo());
+					estudiante.setVisible(true);
+				}else {
+					JOptionPane.showMessageDialog(null, "La casilla Nombre es Obligatoria y no puede estar vacia");
+				}
 			}
 		});
 		btnCrearNuevoGrupo.setBounds(70, 152, 148, 23);
