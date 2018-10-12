@@ -61,13 +61,14 @@ public class VentanaInicial extends JFrame {
 		JButton btnCrearNuevoGrupo = new JButton("Crear Nuevo Grupo");
 		btnCrearNuevoGrupo.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
+				//Se crean ventanas de advertencia para casilla vacia y confirmacion para casilla correcta.
 				if(!casillaVacia()) {
 					Grupo grupo = new Grupo();
 					grupo.agregarGrupo(textoNuevoGrupo.getText().toString());
 					JOptionPane.showMessageDialog(null, "Gracias, se ha creado el grupo " + grupo.ultimoGrupo()); 
-					VentanaNuevoIntegrante Estudiante=new VentanaNuevoIntegrante();
-					Estudiante.setVisible(true);
+					//Abre ventana VentanaNuevoIntegrante y pasa objeto @Grupo
+					new VentanaNuevoIntegrante(grupo).setVisible(true);
+					;
 				}else {
 					JOptionPane.showMessageDialog(null, "La casilla Nombre es Obligatoria y no puede estar vacia");
 				}

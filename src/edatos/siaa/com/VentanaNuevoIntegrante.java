@@ -28,10 +28,13 @@ public class VentanaNuevoIntegrante extends JFrame {
 	//DECLARAMOS LA LINKEDLIST
 	public static LinkedList<Object> contenedor = new LinkedList<Object>();
 
+	
+	
 	/**
 	 * Create the frame.
 	 */
-	public VentanaNuevoIntegrante() {
+	//Se agrega la variable @Grupo como entrada para recibir de la ventana anterior
+	public VentanaNuevoIntegrante(Grupo grupo) {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
@@ -111,6 +114,7 @@ public class VentanaNuevoIntegrante extends JFrame {
 		contentPane.add(lblGrupoGeneral);
 		
 		JTextPane textPanelGrupo = new JTextPane();
+		textPanelGrupo.setText(grupo.ultimoGrupo());
 		textPanelGrupo.setBounds(143, 168, 252, 20);
 		textPanelGrupo.setEditable(false);
 		contentPane.add(textPanelGrupo);
