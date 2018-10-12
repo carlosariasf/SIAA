@@ -23,23 +23,7 @@ public class VentanaInicial extends JFrame {
 	private JPanel contentPane;
 	private static JTextField textoNuevoGrupo;
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					VentanaInicial frame = new VentanaInicial();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-		
-		
-	}
+	
 	public boolean casillaVacia() {
 		
 		if(textoNuevoGrupo.getText().isEmpty())
@@ -72,16 +56,18 @@ public class VentanaInicial extends JFrame {
 		textoNuevoGrupo.setBounds(116, 91, 217, 20);
 		contentPane.add(textoNuevoGrupo);
 		textoNuevoGrupo.setColumns(10);
-		final VentanaNuevoIntegrante estudiante=new VentanaNuevoIntegrante();
+		
 		
 		JButton btnCrearNuevoGrupo = new JButton("Crear Nuevo Grupo");
 		btnCrearNuevoGrupo.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
 				if(!casillaVacia()) {
-					NuevoGrupo.nuevoGrupo(textoNuevoGrupo.getText().toString());
-					JOptionPane.showMessageDialog(null, "Gracias, se ha creado el grupo " + NuevoGrupo.getNombreGrupo());
-					estudiante.setVisible(true);
+					Grupo grupo = new Grupo();
+					grupo.agregarGrupo(textoNuevoGrupo.getText().toString());
+					JOptionPane.showMessageDialog(null, "Gracias, se ha creado el grupo " + grupo.ultimoGrupo());
+					VentanaNuevoIntegrante Estudiante=new VentanaNuevoIntegrante();
+					Estudiante.setVisible(true);
 				}else {
 					JOptionPane.showMessageDialog(null, "La casilla Nombre es Obligatoria y no puede estar vacia");
 				}
@@ -94,9 +80,14 @@ public class VentanaInicial extends JFrame {
 		btnCancelar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				System.exit(0);
+				
+				//JFrame VentanaInicial = new JFrame("Test InternalJFrame");
+				//VentanaInicial.getContentPane().add(new AgragarIntegrante());
+				//.setVisible(true);
 			}
 		});
 		btnCancelar.setBounds(268, 152, 89, 23);
 		contentPane.add(btnCancelar);
 	}
 }
+

@@ -29,22 +29,6 @@ public class VentanaNuevoIntegrante extends JFrame {
 	public static LinkedList<Object> contenedor = new LinkedList<Object>();
 
 	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					VentanaNuevoIntegrante frame = new VentanaNuevoIntegrante();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
-	/**
 	 * Create the frame.
 	 */
 	public VentanaNuevoIntegrante() {
@@ -128,7 +112,6 @@ public class VentanaNuevoIntegrante extends JFrame {
 		
 		JTextPane textPanelGrupo = new JTextPane();
 		textPanelGrupo.setBounds(143, 168, 252, 20);
-		textPanelGrupo.setText(NuevoGrupo.getNombreGrupo());
 		textPanelGrupo.setEditable(false);
 		contentPane.add(textPanelGrupo);
 		
