@@ -65,7 +65,7 @@ public class VentanaInicial extends JFrame {
 				if(!casillaVacia()) {
 					Grupo grupo = new Grupo();
 					grupo.agregarGrupo(textoNuevoGrupo.getText().toString());
-					JOptionPane.showMessageDialog(null, "Gracias, se ha creado el grupo " + grupo.ultimoGrupo());
+					JOptionPane.showMessageDialog(null, "Gracias, se ha creado el grupo " + grupo.ultimoGrupo()); 
 					VentanaNuevoIntegrante Estudiante=new VentanaNuevoIntegrante();
 					Estudiante.setVisible(true);
 				}else {
