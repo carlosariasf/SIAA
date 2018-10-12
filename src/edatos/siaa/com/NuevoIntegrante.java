@@ -4,22 +4,22 @@ public class NuevoIntegrante {
 	String nombreI;
 	String primerApellidoI;
 	String segundoApellidoI;
-	/*boolean generoI;
-	int edadI;
+	String generoI;
+	
+	/*int edadI;
 	int creditosI;
 	int semestreI;
 	*/
 	
-	public NuevoIntegrante(String nombre, String pApellido, String sApellido) 
+	public NuevoIntegrante(String nombre, String pApellido, String sApellido, String genero) 
 		{
 			super();
 			this.nombreI = nombre;
 			this.primerApellidoI = pApellido;
 			this.segundoApellidoI = sApellido;
+			this.generoI = genero;
 			
-			
-			/*this.generoI = genero;
-			this.edadI = edad;
+			/*this.edadI = edad;
 			this.creditosI = creditos;
 			this.semestreI = semestre;*/
 		}
@@ -48,15 +48,19 @@ public class NuevoIntegrante {
 		this.segundoApellidoI = sApellido;
 	}
 
-	/*public boolean isGenero() {
+	public String getGenero() {
 		return generoI;
 	}
 
-	public void setGeneroI(boolean genero) {
-		this.generoI = genero;
+	public void setGenero(String generoI) {
+		this.generoI = generoI;
 	}
+	
+	
 
-	public int getEdad() {
+
+
+	/*public int getEdad() {
 		return edadI;
 	}
 

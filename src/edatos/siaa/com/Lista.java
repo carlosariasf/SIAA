@@ -27,7 +27,7 @@ public class Lista extends JFrame {
 	//METODO CONSTRUCTOR DE TABLA
 	private void cargarTabla()
 	{
-		Object[] col = {"NOMBRES", "PRIMER APELLIDO", "SEGUNDO APELLIDO"};
+		Object[] col = {"NOMBRES", "PRIMER APELLIDO", "SEGUNDO APELLIDO", "GENERO"};
 		
 		//OBJECT [FILAS][COLUMNAS]
 		Object[][] datos = new Object[VentanaNuevoIntegrante.contenedor.size()][col.length];//SE INICIALIZA DEACUERDO A LA CANTIDAD DE FILAS Y COLUMNAS
@@ -54,6 +54,7 @@ public class Lista extends JFrame {
 			modelo.setValueAt(nuevo.getNombre(), col, 0);
 			modelo.setValueAt(nuevo.getPApellido(), col, 1);
 			modelo.setValueAt(nuevo.getSApellido(), col, 2);
+			modelo.setValueAt(nuevo.getGenero(), col, 3);
 		}
 	}
 	

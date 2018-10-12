@@ -1,14 +1,19 @@
 package edatos.siaa.com;
 import java.awt.EventQueue;
+
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
+
 import java.awt.Font;
+
+import javax.swing.ButtonGroup;
 import javax.swing.JRadioButton;
 import javax.swing.JButton;
 import javax.swing.JTextPane;
+
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.util.LinkedList;
@@ -24,6 +29,10 @@ public class VentanaNuevoIntegrante extends JFrame {
 	private JTextField textPApellido;
 	private JTextField textSApellido;
 	private JTextField textNivel;
+	
+	//NO ME PERMITE SELECCIONAR LOS DOS BOTONES AL MISMO TIEMPO
+	private ButtonGroup botones = new ButtonGroup();
+
 	
 	//DECLARAMOS LA LINKEDLIST
 	public static LinkedList<Object> contenedor = new LinkedList<Object>();
@@ -85,6 +94,10 @@ public class VentanaNuevoIntegrante extends JFrame {
 		rdbtnMasculino.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		contentPane.add(rdbtnMasculino);
 		
+		//NO SE LECCIONAR AMBOS BOTONES
+		botones.add(rdbtnFemenino);
+		botones.add(rdbtnMasculino);
+		
 		JLabel lblNivelAcademico = new JLabel("Nivel Academico");
 		lblNivelAcademico.setBounds(36, 143, 93, 16);
 		lblNivelAcademico.setFont(new Font("Tahoma", Font.PLAIN, 13));
@@ -99,6 +112,11 @@ public class VentanaNuevoIntegrante extends JFrame {
 		rdbtnSemestre.setBounds(220, 139, 81, 25);
 		rdbtnSemestre.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		contentPane.add(rdbtnSemestre);
+		
+		//NO SE LECCIONAR AMBOS BOTONES
+		botones.add(rdbtnCreditos);
+		botones.add(rdbtnSemestre);
+		
 		
 		textNivel = new JTextField();
 		textNivel.setBounds(305, 142, 90, 20);
@@ -134,15 +152,30 @@ public class VentanaNuevoIntegrante extends JFrame {
 				String nombre = textNombres.getText(); 
 				String pApellido = textPApellido.getText();
 				String sApellido = textSApellido.getText();
+				String genero;
 				
-				/*boolean generoI;
-				int edad;
+				
+				/*int edad;
 				int creditos;
 				int semestre;
 				*/
 				
+				if(rdbtnFemenino.isSelected())
+				{
+					genero = "Femenino";
+				}
+				else{
+					if(rdbtnMasculino.isSelected()){
+						genero = "Masculino";
+					}
+					else{
+						genero = "Debe seleccionar genero";
+					}
+					
+				}
+				
 				//LLAMAMOS LA CLASE NUEVOINTEGRANTE Y LE AGREGAMOS LOS DATOS
-				NuevoIntegrante alumno = new NuevoIntegrante(nombre, pApellido, sApellido);
+				NuevoIntegrante alumno = new NuevoIntegrante(nombre, pApellido, sApellido, genero);
 				
 				//ESTOS VALORES SE LOS AGREGAMOS A LA LINKEDLIST LLAMADA CONTENEDOR
 				contenedor.offer(alumno);
