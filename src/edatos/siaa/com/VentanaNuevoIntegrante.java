@@ -1,23 +1,17 @@
 package edatos.siaa.com;
-
-import java.awt.BorderLayout;
 import java.awt.EventQueue;
-
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
-import net.miginfocom.swing.MigLayout;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 import java.awt.Font;
-import java.awt.TexturePaint;
-
 import javax.swing.JRadioButton;
-import javax.swing.JComboBox;
 import javax.swing.JButton;
-import javax.swing.JMenuBar;
-import java.awt.Window.Type;
 import javax.swing.JTextPane;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import java.util.LinkedList;
 
 public class VentanaNuevoIntegrante extends JFrame {
 
@@ -26,10 +20,13 @@ public class VentanaNuevoIntegrante extends JFrame {
 	 */
 	private static final long serialVersionUID = 1473381703078951088L;
 	private JPanel contentPane;
-	private JTextField textField;
-	private JTextField textField_1;
-	private JTextField textField_2;
-	private JTextField textField_3;
+	private JTextField textNombres;
+	private JTextField textPApellido;
+	private JTextField textSApellido;
+	private JTextField textNivel;
+	
+	//DECLARAMOS LA LINKEDLIST
+	public static LinkedList<Object> contenedor = new LinkedList<Object>();
 
 	/**
 	 * Launch the application.
@@ -56,81 +53,138 @@ public class VentanaNuevoIntegrante extends JFrame {
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
-		contentPane.setLayout(new MigLayout("", "[20px:n][][][149.00,grow,right][30px:n]", "[20px:n][][][][][][grow][][][30px:n]"));
+		contentPane.setLayout(null);
 		
 		JLabel lblNewLabel = new JLabel("Nombres");
+		lblNewLabel.setBounds(36, 39, 51, 16);
 		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 13));
-		contentPane.add(lblNewLabel, "cell 1 1");
+		contentPane.add(lblNewLabel);
 		
-		textField = new JTextField();
-		textField.setFont(new Font("Tahoma", Font.PLAIN, 13));
-		contentPane.add(textField, "cell 3 1,growx");
-		textField.setColumns(10);
+		textNombres = new JTextField();
+		textNombres.setBounds(143, 36, 252, 22);
+		textNombres.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		contentPane.add(textNombres);
+		textNombres.setColumns(10);
 		
 		JLabel lblPrimerApellido = new JLabel("Primer Apellido");
+		lblPrimerApellido.setBounds(36, 63, 87, 16);
 		lblPrimerApellido.setFont(new Font("Tahoma", Font.PLAIN, 13));
-		contentPane.add(lblPrimerApellido, "cell 1 2");
+		contentPane.add(lblPrimerApellido);
 		
-		textField_1 = new JTextField();
-		contentPane.add(textField_1, "cell 3 2,growx");
-		textField_1.setColumns(10);
+		textPApellido = new JTextField();
+		textPApellido.setBounds(143, 62, 252, 20);
+		contentPane.add(textPApellido);
+		textPApellido.setColumns(10);
 		
 		JLabel lblS = new JLabel("Segundo Apellido");
+		lblS.setBounds(36, 87, 99, 16);
 		lblS.setFont(new Font("Tahoma", Font.PLAIN, 13));
-		contentPane.add(lblS, "cell 1 3");
+		contentPane.add(lblS);
 		
-		textField_2 = new JTextField();
-		contentPane.add(textField_2, "cell 3 3,growx");
-		textField_2.setColumns(10);
+		textSApellido = new JTextField();
+		textSApellido.setBounds(143, 86, 252, 20);
+		contentPane.add(textSApellido);
+		textSApellido.setColumns(10);
 		
 		JLabel lblNewLabel_1 = new JLabel("Genero");
+		lblNewLabel_1.setBounds(36, 114, 41, 16);
 		lblNewLabel_1.setFont(new Font("Tahoma", Font.PLAIN, 13));
-		contentPane.add(lblNewLabel_1, "cell 1 4");
+		contentPane.add(lblNewLabel_1);
 		
-		JRadioButton rdbtnNewRadioButton = new JRadioButton("Femenino");
-		rdbtnNewRadioButton.setFont(new Font("Tahoma", Font.PLAIN, 13));
-		contentPane.add(rdbtnNewRadioButton, "flowx,cell 3 4,alignx left");
+		JRadioButton rdbtnFemenino = new JRadioButton("Femenino");
+		rdbtnFemenino.setBounds(143, 110, 81, 25);
+		rdbtnFemenino.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		contentPane.add(rdbtnFemenino);
 		
-		JRadioButton rdbtnNewRadioButton_1 = new JRadioButton("Masculino");
-		rdbtnNewRadioButton_1.setFont(new Font("Tahoma", Font.PLAIN, 13));
-		contentPane.add(rdbtnNewRadioButton_1, "cell 3 4,alignx center");
+		JRadioButton rdbtnMasculino = new JRadioButton("Masculino");
+		rdbtnMasculino.setBounds(228, 110, 81, 25);
+		rdbtnMasculino.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		contentPane.add(rdbtnMasculino);
 		
 		JLabel lblNivelAcademico = new JLabel("Nivel Academico");
+		lblNivelAcademico.setBounds(36, 143, 93, 16);
 		lblNivelAcademico.setFont(new Font("Tahoma", Font.PLAIN, 13));
-		contentPane.add(lblNivelAcademico, "cell 1 5");
+		contentPane.add(lblNivelAcademico);
 		
 		JRadioButton rdbtnCreditos = new JRadioButton("Creditos");
+		rdbtnCreditos.setBounds(143, 139, 73, 25);
 		rdbtnCreditos.setFont(new Font("Tahoma", Font.PLAIN, 13));
-		contentPane.add(rdbtnCreditos, "flowx,cell 3 5");
+		contentPane.add(rdbtnCreditos);
 		
 		JRadioButton rdbtnSemestre = new JRadioButton("Semestre");
+		rdbtnSemestre.setBounds(220, 139, 81, 25);
 		rdbtnSemestre.setFont(new Font("Tahoma", Font.PLAIN, 13));
-		contentPane.add(rdbtnSemestre, "cell 3 5");
+		contentPane.add(rdbtnSemestre);
 		
-		textField_3 = new JTextField();
-		contentPane.add(textField_3, "cell 3 5,growx");
-		textField_3.setColumns(10);
+		textNivel = new JTextField();
+		textNivel.setBounds(305, 142, 90, 20);
+		contentPane.add(textNivel);
+		textNivel.setColumns(10);
 		
 		JLabel lblGrupoGeneral = new JLabel("Grupo General");
+		lblGrupoGeneral.setBounds(36, 170, 82, 16);
 		lblGrupoGeneral.setFont(new Font("Tahoma", Font.PLAIN, 13));
-		contentPane.add(lblGrupoGeneral, "cell 1 6");
+		contentPane.add(lblGrupoGeneral);
 		
 		JTextPane textPanelGrupo = new JTextPane();
+		textPanelGrupo.setBounds(143, 168, 252, 20);
 		textPanelGrupo.setText(NuevoGrupo.getNombreGrupo());
 		textPanelGrupo.setEditable(false);
-		contentPane.add(textPanelGrupo, "cell 3 6,grow");
+		contentPane.add(textPanelGrupo);
 		
 		JButton btnVolver = new JButton("Atras");
+		btnVolver.setBounds(36, 196, 82, 25);
 		btnVolver.setFont(new Font("Tahoma", Font.PLAIN, 13));
-		contentPane.add(btnVolver, "cell 1 8");
+		contentPane.add(btnVolver);
 		
 		JButton btnGuardar = new JButton("Guardar");
+		btnGuardar.setBounds(319, 196, 92, 25);
 		btnGuardar.setFont(new Font("Tahoma", Font.PLAIN, 13));
-		contentPane.add(btnGuardar, "flowx,cell 3 8");
+		contentPane.add(btnGuardar);
 		
 		JButton btnAgregarOtroIntegrante = new JButton("Agregar otro Integrante");
+		btnAgregarOtroIntegrante.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) 
+			{
+				
+				//DATOS DEL ESTUDIANTE A GUARDAR
+				String nombre = textNombres.getText(); 
+				String pApellido = textPApellido.getText();
+				String sApellido = textSApellido.getText();
+				
+				/*boolean generoI;
+				int edad;
+				int creditos;
+				int semestre;
+				*/
+				
+				//LLAMAMOS LA CLASE NUEVOINTEGRANTE Y LE AGREGAMOS LOS DATOS
+				NuevoIntegrante alumno = new NuevoIntegrante(nombre, pApellido, sApellido);
+				
+				//ESTOS VALORES SE LOS AGREGAMOS A LA LINKEDLIST LLAMADA CONTENEDOR
+				contenedor.offer(alumno);
+				
+				//LIMPIAMOS LOS CAMPOS PARA PODER AGREGAR OTRO INTEGRANTE
+				textNombres.setText(""); textPApellido.setText(""); textSApellido.setText("");
+				
+			}
+		});
+		btnAgregarOtroIntegrante.setBounds(140, 196, 169, 25);
 		btnAgregarOtroIntegrante.setFont(new Font("Tahoma", Font.PLAIN, 13));
-		contentPane.add(btnAgregarOtroIntegrante, "cell 3 8");
+		contentPane.add(btnAgregarOtroIntegrante);
+		
+		JButton btnVerLista = new JButton("Ver Integrantes");
+		btnVerLista.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) 
+			{
+				//LLAMAMOS LA VENTANA QUE NOS MUESTRA LA LISTA 
+				Lista l = new Lista();
+				l.setVisible(true);
+				
+			}
+		});
+		btnVerLista.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		btnVerLista.setBounds(143, 226, 166, 25);
+		contentPane.add(btnVerLista);
 	}
-
 }
