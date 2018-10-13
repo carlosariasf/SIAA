@@ -1,5 +1,5 @@
 package edatos.siaa.com;
 
-public class OrganizaCreditos {
+public class Algoritmos {
 
 }
