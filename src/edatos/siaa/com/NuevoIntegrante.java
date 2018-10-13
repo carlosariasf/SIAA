@@ -1,89 +1,95 @@
 package edatos.siaa.com;
 
 public class NuevoIntegrante {
-	String nombreI;
-	String primerApellidoI;
-	String segundoApellidoI;
-	String generoI;
+	String nombreIntegrante;
+	String primerApellidoIntegrante;
+	String segundoApellidoIntegrante;
+	boolean generoIntegrante;
+	int edadIntegrante;
+	boolean creditosOSemestre;
+	int nivelEstudio;
 	
-	/*int edadI;
-	int creditosI;
-	int semestreI;
-	*/
 	
-	public NuevoIntegrante(String nombre, String pApellido, String sApellido, String genero) 
+	public NuevoIntegrante(String nombre, String pApellido, String sApellido, boolean genero,int edadIntegrante, boolean creditososemestre, int nivelEstudio) 
 		{
 			super();
-			this.nombreI = nombre;
-			this.primerApellidoI = pApellido;
-			this.segundoApellidoI = sApellido;
-			this.generoI = genero;
-			
-			/*this.edadI = edad;
-			this.creditosI = creditos;
-			this.semestreI = semestre;*/
+			this.nombreIntegrante = nombre;
+			this.primerApellidoIntegrante = pApellido;
+			this.segundoApellidoIntegrante = sApellido;
+			this.generoIntegrante = genero;
+			this.edadIntegrante = edadIntegrante;
+			this.creditosOSemestre = creditososemestre;
+			this.nivelEstudio = nivelEstudio;
 		}
 
 	public String getNombre() {
-		return nombreI;
+		return nombreIntegrante;
 	}
 
 	public void setNombreI(String nombre) {
-		this.nombreI = nombre;
+		this.nombreIntegrante = nombre;
 	}
 
 	public String getPApellido() {
-		return primerApellidoI;
+		return primerApellidoIntegrante;
 	}
 
 	public void setPrimerApellidoI(String pApellido) {
-		this.primerApellidoI = pApellido;
+		this.primerApellidoIntegrante = pApellido;
 	}
 
 	public String getSApellido() {
-		return segundoApellidoI;
+		return segundoApellidoIntegrante;
 	}
 
 	public void setSegundoApellidoI(String sApellido) {
-		this.segundoApellidoI = sApellido;
+		this.segundoApellidoIntegrante = sApellido;
 	}
 
+	//Si @generoIntegrante es verdadero regresa Femenino, si es falso regresa Masculino
 	public String getGenero() {
-		return generoI;
+		if(generoIntegrante) {
+		return "Femenino";}
+		else {
+			return "Masculino";
+		}
 	}
 
-	public void setGenero(String generoI) {
-		this.generoI = generoI;
+	public void setGenero(boolean genero) {
+		this.generoIntegrante = genero;
+		
+	}
+
+	public int getEdadIntegrante() {
+		return edadIntegrante;
+	}
+
+	public void setEdadIntegrante(int edadIntegrante) {
+		this.edadIntegrante = edadIntegrante;
+	}
+
+	//Si @creditosOSemestre es verdadero regresa Creditos, si es falso regresa Semestre
+	public String getCreditosOSemestre() {
+		if(creditosOSemestre) {
+			return "Creditos";}
+			else {
+				return "Semestre";
+			}
+	}
+
+	public void setCreditosOSemestre(boolean creditosOSemestre) {
+		this.creditosOSemestre = creditosOSemestre;
+	}
+
+	public int getNivelEstudio() {
+		return nivelEstudio;
+	}
+
+	public void setNivelEstudio(int nivelEstudio) {
+		this.nivelEstudio = nivelEstudio;
 	}
 	
 	
-
-
-
-	/*public int getEdad() {
-		return edadI;
-	}
-
-	public void setEdad(int edad) {
-		this.edadI = edad;
-	}
-
-	public int getCreditos() {
-		return creditosI;
-	}
-
-	public void setCreditos(int creditos) {
-		this.creditosI = creditos;
-	}
-
-	public int getSemestre() {
-		return semestreI;
-	}
-
-	public void setSemestreI(int semestre) {
-		this.semestreI = semestre;
-	}
-	*/
 	
 }
 
