@@ -1,16 +1,17 @@
 package edatos.siaa.com;
 
-public class NuevoIntegrante {
+
+public class NuevoIntegrante implements Comparable<NuevoIntegrante> {
 	String nombreIntegrante;
 	String primerApellidoIntegrante;
 	String segundoApellidoIntegrante;
 	boolean generoIntegrante;
-	int edadIntegrante;
+	Integer edadIntegrante;
 	boolean creditosOSemestre;
-	int nivelEstudio;
+	Integer nivelEstudio;
 	
 	
-	public NuevoIntegrante(String nombre, String pApellido, String sApellido, boolean genero,int edadIntegrante, boolean creditososemestre, int nivelEstudio) 
+	public NuevoIntegrante(String nombre, String pApellido, String sApellido, boolean genero,Integer edadIntegrante, boolean creditososemestre, Integer nivelEstudio) 
 		{
 			super();
 			this.nombreIntegrante = nombre;
@@ -89,7 +90,10 @@ public class NuevoIntegrante {
 		this.nivelEstudio = nivelEstudio;
 	}
 	
-	
+	@Override
+	public int compareTo(NuevoIntegrante t) {
+		return edadIntegrante.compareTo(t.getEdadIntegrante());
+	}
 	
 }
 

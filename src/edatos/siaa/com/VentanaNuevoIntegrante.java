@@ -34,7 +34,7 @@ public class VentanaNuevoIntegrante extends JFrame {
 
 	
 	//DECLARAMOS LA LINKEDLIST
-	public static LinkedList<Object> contenedor = new LinkedList<Object>();
+	public static LinkedList<NuevoIntegrante> contenedor = new LinkedList<NuevoIntegrante>();
 	
 
 	
