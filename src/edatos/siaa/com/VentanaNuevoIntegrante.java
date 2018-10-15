@@ -194,6 +194,8 @@ public class VentanaNuevoIntegrante extends JFrame {
 						creditososemestre = false;
 					}
 				}
+				
+				
 				//LLAMAMOS LA CLASE NUEVOINTEGRANTE Y LE AGREGAMOS LOS DATOS
 				NuevoIntegrante alumno = new NuevoIntegrante(nombre, pApellido, sApellido, genero, edad, creditososemestre, nivel);
 				
@@ -222,6 +224,23 @@ public class VentanaNuevoIntegrante extends JFrame {
 		btnVerLista.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		btnVerLista.setBounds(143, 247, 166, 25);
 		contentPane.add(btnVerLista);
+		
+		
+		JButton btnOrdenar = new JButton("Ordenar");
+		btnOrdenar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) 
+			{
+				//LLAMAMOS LA VENTANA QUE NOS MUESTRA LA LISTA 
+				OrdenarGrupos l = new OrdenarGrupos();
+				l.setVisible(true);
+				
+			}
+		});
+		btnOrdenar.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		btnOrdenar.setBounds(36, 247, 82, 25);
+		contentPane.add(btnOrdenar);
+		
+		
 		
 		
 	}
