@@ -29,6 +29,7 @@ public class VentanaNuevoIntegrante extends JFrame {
 	private JTextField textSApellido;
 	private JTextField textNivel;
 	private JTextField textEdad;
+	private boolean creditososemestre;
 	
 	//NO ME PERMITE SELECCIONAR LOS DOS BOTONES AL MISMO TIEMPO
 
@@ -156,11 +157,6 @@ public class VentanaNuevoIntegrante extends JFrame {
 		btnVolver.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		contentPane.add(btnVolver);
 		
-		JButton btnGuardar = new JButton("Guardar");
-		btnGuardar.setBounds(322, 221, 92, 25);
-		btnGuardar.setFont(new Font("Tahoma", Font.PLAIN, 13));
-		contentPane.add(btnGuardar);
-		
 		JButton btnAgregarOtroIntegrante = new JButton("Agregar otro Integrante");
 		btnAgregarOtroIntegrante.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) 
@@ -172,7 +168,6 @@ public class VentanaNuevoIntegrante extends JFrame {
 				String sApellido = textSApellido.getText();
 				boolean genero=true;
 				int edad=Integer.parseInt(textEdad.getText());
-				boolean creditososemestre=true;
 				int nivel=Integer.parseInt(textNivel.getText());
 				
 				if(rdbtnFemenino.isSelected())
@@ -231,13 +226,12 @@ public class VentanaNuevoIntegrante extends JFrame {
 			public void actionPerformed(ActionEvent e) 
 			{
 				//LLAMAMOS LA VENTANA QUE NOS MUESTRA LA LISTA 
-				VentanaSeleccionOrden l = new VentanaSeleccionOrden();
-				l.setVisible(true);
+				new VentanaSeleccionOrden(creditososemestre).setVisible(true);
 				
 			}
 		});
 		btnOrdenar.setFont(new Font("Tahoma", Font.PLAIN, 13));
-		btnOrdenar.setBounds(36, 247, 82, 25);
+		btnOrdenar.setBounds(322, 221, 82, 25);
 		contentPane.add(btnOrdenar);
 		
 		
