@@ -42,16 +42,18 @@ public class OrdenarGrupos extends JFrame {
 	public void MostrarDatos()
 	{
 		NuevoIntegrante nuevo;
+		//Metodo sort para organizar los datos
 		Collections.sort(VentanaNuevoIntegrante.contenedor);
+		
 		int c=0;
 		String grupo;
-		//RECORRO TODA LA CLASE Y VOY SACANDO DATO POR DATO
-		//EL CONTENEDOR  ALMACENO LOS DATOS
+		//ciclo for que recorre la lista y crea los grupos de acuerdo a la cantidad de integrantes
 		
 		Integrantes numeroIntegrantes = new Integrantes();
 		 String cantidad = numeroIntegrantes.ultimoIntegrante();
 		 int numeroEstudiantes = Integer.parseInt(cantidad);
 		 
+
 		for(int i=0; i<VentanaNuevoIntegrante.contenedor.size()/numeroEstudiantes; i++)
 		{
 			grupo="Grupo" + (i+1);

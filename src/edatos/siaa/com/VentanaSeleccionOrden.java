@@ -68,6 +68,7 @@ public class VentanaSeleccionOrden extends JFrame {
 				//LLAMAMOS LA VENTANA QUE NOS MUESTRA LA LISTA 
 				Integrantes integrantes = new Integrantes();
 				integrantes.agregarIntegrantes(textIntegrantes.getText().toString());
+				integrantes.agregarBoton("edad".toString());
 				OrdenarGrupos l = new OrdenarGrupos(integrantes);
 				l.setVisible(true);
 			}
@@ -81,7 +82,19 @@ public class VentanaSeleccionOrden extends JFrame {
 		btnGenero_1.setBounds(251, 187, 111, 25);
 		contentPane.add(btnGenero_1);
 		
+		
 		JButton btnNivel = new JButton("Nivel");
+		btnNivel.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				//LLAMAMOS LA VENTANA QUE NOS MUESTRA LA LISTA 
+				Integrantes integrantes = new Integrantes();
+				integrantes.agregarIntegrantes(textIntegrantes.getText().toString());
+				integrantes.agregarBoton("nivel".toString());
+				OrdenarGrupos l = new OrdenarGrupos(integrantes);
+				l.setVisible(true);
+			}
+		});
+		
 		btnNivel.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		btnNivel.setBounds(36, 187, 111, 25);
 		contentPane.add(btnNivel);

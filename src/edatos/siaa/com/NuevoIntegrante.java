@@ -90,10 +90,28 @@ public class NuevoIntegrante implements Comparable<NuevoIntegrante> {
 		this.nivelEstudio = nivelEstudio;
 	}
 	
+	
+	
 	@Override
 	public int compareTo(NuevoIntegrante t) {
-		return edadIntegrante.compareTo(t.getEdadIntegrante());
+		Integrantes botones = new Integrantes();
+		String botonPulsado = botones.ultimoBoton();
+		
+		
+			if (botonPulsado=="nivel") {
+			
+			return nivelEstudio.compareTo(t.getNivelEstudio());
+			
+		} else{
+			
+			return edadIntegrante.compareTo(t.getEdadIntegrante());
+
+		}
+		
+		
+		
 	}
+	
 	
 }
 
