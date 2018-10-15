@@ -38,10 +38,6 @@ public class OrdenarGrupos extends JFrame {
 		table.setModel(modelo);
 	}
 	
-	VentanaSeleccionOrden orden = new VentanaSeleccionOrden();
-	
-	
-	
 	//METODO PARA MOSTRAR DATOS
 	public void MostrarDatos()
 	{
@@ -50,11 +46,16 @@ public class OrdenarGrupos extends JFrame {
 		int c=0;
 		String grupo;
 		//RECORRO TODA LA CLASE Y VOY SACANDO DATO POR DATO
-		//EL CONTENEDOR  ALMACENO LOS DATOS 
-		for(int i=0; i<VentanaNuevoIntegrante.contenedor.size()/2; i++)
+		//EL CONTENEDOR  ALMACENO LOS DATOS
+		
+		Integrantes numeroIntegrantes = new Integrantes();
+		 String cantidad = numeroIntegrantes.ultimoIntegrante();
+		 int numeroEstudiantes = Integer.parseInt(cantidad);
+		 
+		for(int i=0; i<VentanaNuevoIntegrante.contenedor.size()/numeroEstudiantes; i++)
 		{
 			grupo="Grupo" + (i+1);
-			for (int j = 0; j < 2; j++) {
+			for (int j = 0; j < numeroEstudiantes; j++) {
 				//OBTENEMOS DATOS DE CADA POSICION
 				nuevo = (NuevoIntegrante)VentanaNuevoIntegrante.contenedor.get(c);
 				c=c+1;
@@ -94,7 +95,7 @@ public class OrdenarGrupos extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public OrdenarGrupos() {
+	public OrdenarGrupos(Integrantes integrantes) {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();

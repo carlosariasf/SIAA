@@ -17,7 +17,7 @@ public class VentanaSeleccionOrden extends JFrame {
 	 */
 	private static final long serialVersionUID = 14733817078951088L;
 	private JPanel contentPane;
-	private JTextField textEdad;
+	private JTextField textIntegrantes;
 	
 
 	
@@ -25,7 +25,7 @@ public class VentanaSeleccionOrden extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	//Se agrega la variable @Grupo como entrada para recibir de la ventana anterior
+	
 	public VentanaSeleccionOrden() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 334);
@@ -45,10 +45,10 @@ public class VentanaSeleccionOrden extends JFrame {
 		lblIntegrantes.setBounds(36, 96, 147, 14);
 		contentPane.add(lblIntegrantes);
 		
-		textEdad = new JTextField();
-		textEdad.setBounds(195, 93, 41, 20);
-		contentPane.add(textEdad);
-		textEdad.setColumns(10);
+		textIntegrantes = new JTextField();
+		textIntegrantes.setBounds(195, 93, 41, 20);
+		contentPane.add(textIntegrantes);
+		textIntegrantes.setColumns(10);
 		
 		
 		JButton btnVolver = new JButton("Atras");
@@ -66,7 +66,9 @@ public class VentanaSeleccionOrden extends JFrame {
 		btnEdad.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				//LLAMAMOS LA VENTANA QUE NOS MUESTRA LA LISTA 
-				OrdenarGrupos l = new OrdenarGrupos();
+				Integrantes integrantes = new Integrantes();
+				integrantes.agregarIntegrantes(textIntegrantes.getText().toString());
+				OrdenarGrupos l = new OrdenarGrupos(integrantes);
 				l.setVisible(true);
 			}
 		});
@@ -74,15 +76,15 @@ public class VentanaSeleccionOrden extends JFrame {
 		btnEdad.setBounds(144, 187, 111, 25);
 		contentPane.add(btnEdad);
 		
-		/*JButton btnGenero_1 = new JButton("Genero");
+		JButton btnGenero_1 = new JButton("Genero");
 		btnGenero_1.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		btnGenero_1.setBounds(251, 187, 111, 25);
-		contentPane.add(btnGenero_1);*/
+		contentPane.add(btnGenero_1);
 		
-		/*JButton btnEdad = new JButton("Edad");
-		btnEdad.setFont(new Font("Tahoma", Font.PLAIN, 13));
-		btnEdad.setBounds(36, 187, 111, 25);
-		contentPane.add(btnEdad);*/
+		JButton btnNivel = new JButton("Nivel");
+		btnNivel.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		btnNivel.setBounds(36, 187, 111, 25);
+		contentPane.add(btnNivel);
 		
 		
 	}
