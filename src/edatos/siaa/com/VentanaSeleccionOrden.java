@@ -9,6 +9,7 @@ import java.awt.Font;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.JTextPane;
 
 public class VentanaSeleccionOrden extends JFrame {
 
@@ -18,6 +19,7 @@ public class VentanaSeleccionOrden extends JFrame {
 	private static final long serialVersionUID = 14733817078951088L;
 	private JPanel contentPane;
 	private JTextField textIntegrantes;
+	private boolean nivel;
 	
 
 	
@@ -26,7 +28,8 @@ public class VentanaSeleccionOrden extends JFrame {
 	 * Create the frame.
 	 */
 	
-	public VentanaSeleccionOrden() {
+	public VentanaSeleccionOrden(boolean creditososemestre) {
+		nivel = creditososemestre;
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 334);
 		contentPane = new JPanel();
@@ -52,7 +55,7 @@ public class VentanaSeleccionOrden extends JFrame {
 		
 		
 		JButton btnVolver = new JButton("Atras");
-		btnVolver.setBounds(362, 187, 82, 25);
+		btnVolver.setBounds(342, 259, 82, 25);
 		btnVolver.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		contentPane.add(btnVolver);
 		
@@ -73,19 +76,32 @@ public class VentanaSeleccionOrden extends JFrame {
 			}
 		});
 		btnEdad.setFont(new Font("Tahoma", Font.PLAIN, 13));
-		btnEdad.setBounds(144, 187, 111, 25);
+		btnEdad.setBounds(161, 187, 111, 25);
 		contentPane.add(btnEdad);
 		
 		JButton btnGenero_1 = new JButton("Genero");
 		btnGenero_1.setFont(new Font("Tahoma", Font.PLAIN, 13));
-		btnGenero_1.setBounds(251, 187, 111, 25);
+		btnGenero_1.setBounds(297, 187, 111, 25);
 		contentPane.add(btnGenero_1);
 		
 		JButton btnNivel = new JButton("Nivel");
 		btnNivel.setFont(new Font("Tahoma", Font.PLAIN, 13));
-		btnNivel.setBounds(36, 187, 111, 25);
+		btnNivel.setBounds(25, 187, 111, 25);
 		contentPane.add(btnNivel);
 		
+		JTextPane textPaneNivel = new JTextPane();
+		textPaneNivel.setText(nivelFiltro());
+		textPaneNivel.setEditable(false);
+		textPaneNivel.setBounds(46, 168, 73, 20);
+		contentPane.add(textPaneNivel);
 		
+		
+	}
+	public String nivelFiltro() {
+		if(nivel) {
+			return "Creditos";}
+			else {
+				return "Semestre";
+			}
 	}
 }

@@ -55,6 +55,9 @@ public class NuevoIntegrante implements Comparable<NuevoIntegrante> {
 			return "Masculino";
 		}
 	}
+	public boolean getGeneroVariable() {
+		return generoIntegrante;
+	}
 
 	public void setGenero(boolean genero) {
 		this.generoIntegrante = genero;
@@ -76,6 +79,10 @@ public class NuevoIntegrante implements Comparable<NuevoIntegrante> {
 			else {
 				return "Semestre";
 			}
+	}
+	
+	public boolean getCreditosOSemestreVariable() {
+		return creditosOSemestre;
 	}
 
 	public void setCreditosOSemestre(boolean creditosOSemestre) {
