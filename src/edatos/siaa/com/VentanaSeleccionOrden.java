@@ -5,22 +5,17 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
-
 import java.awt.Font;
-
-import javax.swing.ButtonGroup;
 import javax.swing.JButton;
-
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
-import java.util.LinkedList;
 
 public class VentanaSeleccionOrden extends JFrame {
 
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1473381703078951088L;
+	private static final long serialVersionUID = 14733817078951088L;
 	private JPanel contentPane;
 	private JTextField textEdad;
 	
@@ -31,7 +26,7 @@ public class VentanaSeleccionOrden extends JFrame {
 	 * Create the frame.
 	 */
 	//Se agrega la variable @Grupo como entrada para recibir de la ventana anterior
-	public VentanaSeleccionOrden(Grupo grupo) {
+	public VentanaSeleccionOrden() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 334);
 		contentPane = new JPanel();
@@ -44,62 +39,50 @@ public class VentanaSeleccionOrden extends JFrame {
 		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		contentPane.add(lblNewLabel);
 		
-		//NO SE LECCIONAR AMBOS BOTONES
-		ButtonGroup btnGenero = new ButtonGroup();
 		
-		JLabel lblEdad = new JLabel("Numero de Integrantes");
-		lblEdad.setFont(new Font("Tahoma", Font.PLAIN, 13));
-		lblEdad.setBounds(36, 96, 147, 14);
-		contentPane.add(lblEdad);
+		JLabel lblIntegrantes = new JLabel("Numero de Integrantes");
+		lblIntegrantes.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		lblIntegrantes.setBounds(36, 96, 147, 14);
+		contentPane.add(lblIntegrantes);
 		
 		textEdad = new JTextField();
 		textEdad.setBounds(195, 93, 41, 20);
 		contentPane.add(textEdad);
 		textEdad.setColumns(10);
 		
-		//NO SE LECCIONAR AMBOS BOTONES
-		ButtonGroup btnCreditosSemestre = new ButtonGroup();
 		
 		JButton btnVolver = new JButton("Atras");
 		btnVolver.setBounds(362, 187, 82, 25);
 		btnVolver.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		contentPane.add(btnVolver);
 		
-		JButton btnAgregarOtroIntegrante = new JButton("Edad");
-		btnAgregarOtroIntegrante.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) 
-			{
-				
-				
-				
-				
-				
-			}
-		});
-		btnAgregarOtroIntegrante.setBounds(36, 187, 111, 25);
-		btnAgregarOtroIntegrante.setFont(new Font("Tahoma", Font.PLAIN, 13));
-		contentPane.add(btnAgregarOtroIntegrante);
 		
 		JLabel lblSeleccioneElParametro = new JLabel("Seleccione el parametro de ordenamiento");
 		lblSeleccioneElParametro.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		lblSeleccioneElParametro.setBounds(36, 141, 350, 16);
 		contentPane.add(lblSeleccioneElParametro);
 		
-		JButton btnNivel = new JButton("Nivel");
-		btnNivel.addActionListener(new ActionListener() {
+		JButton btnEdad = new JButton("Edad");
+		btnEdad.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				//LLAMAMOS LA VENTANA QUE NOS MUESTRA LA LISTA 
+				OrdenarGrupos l = new OrdenarGrupos();
+				l.setVisible(true);
 			}
 		});
-		btnNivel.setFont(new Font("Tahoma", Font.PLAIN, 13));
-		btnNivel.setBounds(144, 187, 111, 25);
-		contentPane.add(btnNivel);
+		btnEdad.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		btnEdad.setBounds(144, 187, 111, 25);
+		contentPane.add(btnEdad);
 		
-		JButton btnGenero_1 = new JButton("Genero");
+		/*JButton btnGenero_1 = new JButton("Genero");
 		btnGenero_1.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		btnGenero_1.setBounds(251, 187, 111, 25);
-		contentPane.add(btnGenero_1);
+		contentPane.add(btnGenero_1);*/
 		
-		
+		/*JButton btnEdad = new JButton("Edad");
+		btnEdad.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		btnEdad.setBounds(36, 187, 111, 25);
+		contentPane.add(btnEdad);*/
 		
 		
 	}

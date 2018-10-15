@@ -231,7 +231,7 @@ public class VentanaNuevoIntegrante extends JFrame {
 			public void actionPerformed(ActionEvent e) 
 			{
 				//LLAMAMOS LA VENTANA QUE NOS MUESTRA LA LISTA 
-				OrdenarGrupos l = new OrdenarGrupos();
+				VentanaSeleccionOrden l = new VentanaSeleccionOrden();
 				l.setVisible(true);
 				
 			}

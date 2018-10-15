@@ -1,6 +1,7 @@
 package edatos.siaa.com;
 
 import java.awt.EventQueue;
+import java.util.Collections;
 
 import javax.swing.GroupLayout;
 import javax.swing.JFrame;
@@ -10,6 +11,7 @@ import javax.swing.JTable;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
+
 
 public class OrdenarGrupos extends JFrame {
 
@@ -21,6 +23,8 @@ public class OrdenarGrupos extends JFrame {
 	private DefaultTableModel modelo;
 	int col = 0;
 	Object datos;
+	
+	
 	
 	//METODO CONSTRUCTOR DE TABLA
 	private void cargarTabla()
@@ -34,29 +38,39 @@ public class OrdenarGrupos extends JFrame {
 		table.setModel(modelo);
 	}
 	
+	VentanaSeleccionOrden orden = new VentanaSeleccionOrden();
+	
+	
 	
 	//METODO PARA MOSTRAR DATOS
 	public void MostrarDatos()
 	{
 		NuevoIntegrante nuevo;
-		
+		Collections.sort(VentanaNuevoIntegrante.contenedor);
+		int c=0;
+		String grupo;
 		//RECORRO TODA LA CLASE Y VOY SACANDO DATO POR DATO
 		//EL CONTENEDOR  ALMACENO LOS DATOS 
-		for(int i=0; i<VentanaNuevoIntegrante.contenedor.size(); i++)
+		for(int i=0; i<VentanaNuevoIntegrante.contenedor.size()/2; i++)
 		{
-			//OBTENEMOS DATOS DE CADA POSICION
-			nuevo = (NuevoIntegrante)VentanaNuevoIntegrante.contenedor.get(i);
+			grupo="Grupo" + (i+1);
+			for (int j = 0; j < 2; j++) {
+				//OBTENEMOS DATOS DE CADA POSICION
+				nuevo = (NuevoIntegrante)VentanaNuevoIntegrante.contenedor.get(c);
+				c=c+1;
+				//TRAEMOS CADA ATRIBUTO PARA AGREGARLOS A LA TABLA
+				modelo.insertRow(col, new Object[]{});
+				
+				modelo.setValueAt(grupo, col, 0);
+				modelo.setValueAt(nuevo.getNombre(), col, 1);
+				modelo.setValueAt(nuevo.getPApellido(), col, 2);
+				modelo.setValueAt(nuevo.getSApellido(), col, 3);
+				modelo.setValueAt(nuevo.getGenero(), col, 4);
+				modelo.setValueAt(nuevo.getEdadIntegrante(), col, 5);
+				modelo.setValueAt(nuevo.getCreditosOSemestre(), col, 6);
+				modelo.setValueAt(nuevo.getNivelEstudio(), col, 7);
+			}
 			
-			//TRAEMOS CADA ATRIBUTO PARA AGREGARLOS A LA TABLA
-			modelo.insertRow(col, new Object[]{});
-			
-			modelo.setValueAt(nuevo.getNombre(), col, 0);
-			modelo.setValueAt(nuevo.getPApellido(), col, 1);
-			modelo.setValueAt(nuevo.getSApellido(), col, 2);
-			modelo.setValueAt(nuevo.getGenero(), col, 3);
-			modelo.setValueAt(nuevo.getEdadIntegrante(), col, 4);
-			modelo.setValueAt(nuevo.getCreditosOSemestre(), col, 5);
-			modelo.setValueAt(nuevo.getNivelEstudio(), col, 6);
 		}
 	}
 	
