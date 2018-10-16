@@ -1,6 +1,6 @@
 package edatos.siaa.com;
 
-import java.awt.EventQueue;
+
 import java.util.Collections;
 
 import javax.swing.GroupLayout;

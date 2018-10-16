@@ -81,6 +81,18 @@ public class VentanaSeleccionOrden extends JFrame {
 		contentPane.add(btnEdad);
 		
 		JButton btnGenero_1 = new JButton("Genero");
+		btnGenero_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				//LLAMAMOS LA VENTANA QUE NOS MUESTRA LA LISTA 
+				Integrantes integrantes = new Integrantes();
+				integrantes.agregarIntegrantes(textIntegrantes.getText().toString());
+				integrantes.agregarBoton("genero".toString());
+				OrdenarGrupos l = new OrdenarGrupos(integrantes);
+				l.setVisible(true);
+			}
+		});
+		
+		
 		btnGenero_1.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		btnGenero_1.setBounds(297, 187, 111, 25);
 		contentPane.add(btnGenero_1);
