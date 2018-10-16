@@ -46,35 +46,92 @@ public class OrdenarGrupos extends JFrame {
 		Collections.sort(VentanaNuevoIntegrante.contenedor);
 		
 		int c=0;
+		int d=VentanaNuevoIntegrante.contenedor.size() - 1;
 		String grupo;
 		//ciclo for que recorre la lista y crea los grupos de acuerdo a la cantidad de integrantes
 		
 		Integrantes numeroIntegrantes = new Integrantes();
 		 String cantidad = numeroIntegrantes.ultimoIntegrante();
+		 String ordenamiento = numeroIntegrantes.ultimoBoton();
 		 int numeroEstudiantes = Integer.parseInt(cantidad);
 		 
+		 if (ordenamiento=="genero") {
+			 
+			 for(int i=0; i<VentanaNuevoIntegrante.contenedor.size()/numeroEstudiantes; i++)
+				{
+					grupo="Grupo" + (i+1);
+					for (int j = 0; j < numeroEstudiantes; j++) {
+						
+						if (j%2==0) {
+							
+							//OBTENEMOS DATOS DE CADA POSICION
+							nuevo = (NuevoIntegrante)VentanaNuevoIntegrante.contenedor.get(c);
+							c=c+1;
+							//TRAEMOS CADA ATRIBUTO PARA AGREGARLOS A LA TABLA
+							modelo.insertRow(col, new Object[]{});
+							
+							modelo.setValueAt(grupo, col, 0);
+							modelo.setValueAt(nuevo.getNombre(), col, 1);
+							modelo.setValueAt(nuevo.getPApellido(), col, 2);
+							modelo.setValueAt(nuevo.getSApellido(), col, 3);
+							modelo.setValueAt(nuevo.getGenero(), col, 4);
+							modelo.setValueAt(nuevo.getEdadIntegrante(), col, 5);
+							modelo.setValueAt(nuevo.getCreditosOSemestre(), col, 6);
+							modelo.setValueAt(nuevo.getNivelEstudio(), col, 7);
+							
+						} else {
 
-		for(int i=0; i<VentanaNuevoIntegrante.contenedor.size()/numeroEstudiantes; i++)
-		{
-			grupo="Grupo" + (i+1);
-			for (int j = 0; j < numeroEstudiantes; j++) {
-				//OBTENEMOS DATOS DE CADA POSICION
-				nuevo = (NuevoIntegrante)VentanaNuevoIntegrante.contenedor.get(c);
-				c=c+1;
-				//TRAEMOS CADA ATRIBUTO PARA AGREGARLOS A LA TABLA
-				modelo.insertRow(col, new Object[]{});
+							//OBTENEMOS DATOS DE CADA POSICION
+							nuevo = (NuevoIntegrante)VentanaNuevoIntegrante.contenedor.get(d);
+							d=d-1;
+							//TRAEMOS CADA ATRIBUTO PARA AGREGARLOS A LA TABLA
+							modelo.insertRow(col, new Object[]{});
+							
+							modelo.setValueAt(grupo, col, 0);
+							modelo.setValueAt(nuevo.getNombre(), col, 1);
+							modelo.setValueAt(nuevo.getPApellido(), col, 2);
+							modelo.setValueAt(nuevo.getSApellido(), col, 3);
+							modelo.setValueAt(nuevo.getGenero(), col, 4);
+							modelo.setValueAt(nuevo.getEdadIntegrante(), col, 5);
+							modelo.setValueAt(nuevo.getCreditosOSemestre(), col, 6);
+							modelo.setValueAt(nuevo.getNivelEstudio(), col, 7);
+							
+						}
+						
+						
+					}
+					
+				} 
+			 
+			
+		} else {
+			
+			for(int i=0; i<VentanaNuevoIntegrante.contenedor.size()/numeroEstudiantes; i++)
+			{
+				grupo="Grupo" + (i+1);
+				for (int j = 0; j < numeroEstudiantes; j++) {
+					//OBTENEMOS DATOS DE CADA POSICION
+					nuevo = (NuevoIntegrante)VentanaNuevoIntegrante.contenedor.get(c);
+					c=c+1;
+					//TRAEMOS CADA ATRIBUTO PARA AGREGARLOS A LA TABLA
+					modelo.insertRow(col, new Object[]{});
+					
+					modelo.setValueAt(grupo, col, 0);
+					modelo.setValueAt(nuevo.getNombre(), col, 1);
+					modelo.setValueAt(nuevo.getPApellido(), col, 2);
+					modelo.setValueAt(nuevo.getSApellido(), col, 3);
+					modelo.setValueAt(nuevo.getGenero(), col, 4);
+					modelo.setValueAt(nuevo.getEdadIntegrante(), col, 5);
+					modelo.setValueAt(nuevo.getCreditosOSemestre(), col, 6);
+					modelo.setValueAt(nuevo.getNivelEstudio(), col, 7);
+				}
 				
-				modelo.setValueAt(grupo, col, 0);
-				modelo.setValueAt(nuevo.getNombre(), col, 1);
-				modelo.setValueAt(nuevo.getPApellido(), col, 2);
-				modelo.setValueAt(nuevo.getSApellido(), col, 3);
-				modelo.setValueAt(nuevo.getGenero(), col, 4);
-				modelo.setValueAt(nuevo.getEdadIntegrante(), col, 5);
-				modelo.setValueAt(nuevo.getCreditosOSemestre(), col, 6);
-				modelo.setValueAt(nuevo.getNivelEstudio(), col, 7);
 			}
 			
+
 		}
+
+		
 	}
 	
 
