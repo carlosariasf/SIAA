@@ -30,61 +30,59 @@ public class VentanaNuevoIntegrante extends JFrame {
 	private JTextField textNivel;
 	private JTextField textEdad;
 	private boolean creditososemestre;
-	
-	//NO ME PERMITE SELECCIONAR LOS DOS BOTONES AL MISMO TIEMPO
+	private Integer intCreados = 0;
+	private JButton btnOrdenar;
 
-	
-	//DECLARAMOS LA LINKEDLIST
+	// NO ME PERMITE SELECCIONAR LOS DOS BOTONES AL MISMO TIEMPO
+
+	// DECLARAMOS LA LINKEDLIST
 	public static LinkedList<NuevoIntegrante> contenedor = new LinkedList<NuevoIntegrante>();
-	
 
-	
-	
 	/**
 	 * Create the frame.
 	 */
 	//Se agrega la variable @Grupo como entrada para recibir de la ventana anterior
 	public VentanaNuevoIntegrante(Grupo grupo) {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 334);
+		setBounds(100, 100, 451, 353);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
 		JLabel lblNewLabel = new JLabel("Nombres");
-		lblNewLabel.setBounds(36, 39, 51, 16);
+		lblNewLabel.setBounds(36, 39, 126, 16);
 		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		contentPane.add(lblNewLabel);
 		
 		textNombres = new JTextField();
-		textNombres.setBounds(143, 36, 252, 22);
+		textNombres.setBounds(172, 36, 231, 22);
 		textNombres.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		contentPane.add(textNombres);
 		textNombres.setColumns(10);
 		
 		JLabel lblPrimerApellido = new JLabel("Primer Apellido");
-		lblPrimerApellido.setBounds(36, 63, 87, 16);
+		lblPrimerApellido.setBounds(36, 63, 126, 16);
 		lblPrimerApellido.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		contentPane.add(lblPrimerApellido);
 		
 		textPApellido = new JTextField();
-		textPApellido.setBounds(143, 62, 252, 20);
+		textPApellido.setBounds(172, 62, 231, 20);
 		contentPane.add(textPApellido);
 		textPApellido.setColumns(10);
 		
 		JLabel lblS = new JLabel("Segundo Apellido");
-		lblS.setBounds(36, 87, 99, 16);
+		lblS.setBounds(36, 87, 126, 16);
 		lblS.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		contentPane.add(lblS);
 		
 		textSApellido = new JTextField();
-		textSApellido.setBounds(143, 86, 252, 20);
+		textSApellido.setBounds(172, 86, 231, 20);
 		contentPane.add(textSApellido);
 		textSApellido.setColumns(10);
 		
 		JLabel lblNewLabel_1 = new JLabel("Genero");
-		lblNewLabel_1.setBounds(36, 114, 41, 16);
+		lblNewLabel_1.setBounds(36, 114, 82, 16);
 		lblNewLabel_1.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		contentPane.add(lblNewLabel_1);
 		
@@ -106,7 +104,7 @@ public class VentanaNuevoIntegrante extends JFrame {
 		
 		JLabel lblEdad = new JLabel("Edad");
 		lblEdad.setFont(new Font("Tahoma", Font.PLAIN, 13));
-		lblEdad.setBounds(36, 141, 46, 14);
+		lblEdad.setBounds(36, 141, 60, 14);
 		contentPane.add(lblEdad);
 		
 		textEdad = new JTextField();
@@ -137,7 +135,7 @@ public class VentanaNuevoIntegrante extends JFrame {
 		
 		
 		textNivel = new JTextField();
-		textNivel.setBounds(305, 162, 90, 20);
+		textNivel.setBounds(305, 162, 98, 20);
 		contentPane.add(textNivel);
 		textNivel.setColumns(10);
 		
@@ -148,14 +146,17 @@ public class VentanaNuevoIntegrante extends JFrame {
 		
 		JTextPane textPanelGrupo = new JTextPane();
 		textPanelGrupo.setText(grupo.ultimoGrupo());
-		textPanelGrupo.setBounds(143, 186, 252, 20);
+		textPanelGrupo.setBounds(143, 191, 260, 20);
 		textPanelGrupo.setEditable(false);
 		contentPane.add(textPanelGrupo);
 		
-		JButton btnVolver = new JButton("Atras");
-		btnVolver.setBounds(36, 221, 82, 25);
-		btnVolver.setFont(new Font("Tahoma", Font.PLAIN, 13));
-		contentPane.add(btnVolver);
+		JTextPane textPaneAgregados = new JTextPane();
+		textPaneAgregados.setText(intCreados.toString());
+		textPaneAgregados.setEditable(false);
+		textPaneAgregados.setBounds(224, 264, 24, 20);
+		contentPane.add(textPaneAgregados);
+		
+		
 		
 		JButton btnAgregarOtroIntegrante = new JButton("Agregar otro Integrante");
 		btnAgregarOtroIntegrante.addActionListener(new ActionListener() {
@@ -183,10 +184,12 @@ public class VentanaNuevoIntegrante extends JFrame {
 				if(rdbtnCreditos.isSelected())
 				{
 					creditososemestre = true;
+					rdbtnSemestre.setEnabled(false);
 				}
 				else{
 					if(rdbtnSemestre.isSelected()){
 						creditososemestre = false;
+						rdbtnCreditos.setEnabled(false);
 					}
 				}
 				
@@ -200,9 +203,17 @@ public class VentanaNuevoIntegrante extends JFrame {
 				//LIMPIAMOS LOS CAMPOS PARA PODER AGREGAR OTRO INTEGRANTE
 				textNombres.setText(""); textPApellido.setText(""); textSApellido.setText("");textEdad.setText("");textNivel.setText("");
 				
+				intCreados = contenedor.size();
+				textPaneAgregados.setText(intCreados.toString());
+				
+				if(intCreados >=10) {
+					btnOrdenar.setEnabled(true);
+				}
+				
+				
 			}
 		});
-		btnAgregarOtroIntegrante.setBounds(143, 221, 169, 25);
+		btnAgregarOtroIntegrante.setBounds(226, 221, 198, 25);
 		btnAgregarOtroIntegrante.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		contentPane.add(btnAgregarOtroIntegrante);
 		
@@ -217,11 +228,12 @@ public class VentanaNuevoIntegrante extends JFrame {
 			}
 		});
 		btnVerLista.setFont(new Font("Tahoma", Font.PLAIN, 13));
-		btnVerLista.setBounds(143, 247, 166, 25);
+		btnVerLista.setBounds(10, 221, 192, 25);
 		contentPane.add(btnVerLista);
 		
 		
-		JButton btnOrdenar = new JButton("Ordenar");
+		btnOrdenar = new JButton("Ordenar");
+		btnOrdenar.setEnabled(false);
 		btnOrdenar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) 
 			{
@@ -231,11 +243,19 @@ public class VentanaNuevoIntegrante extends JFrame {
 			}
 		});
 		btnOrdenar.setFont(new Font("Tahoma", Font.PLAIN, 13));
-		btnOrdenar.setBounds(322, 221, 82, 25);
+		btnOrdenar.setBounds(342, 259, 82, 25);
 		contentPane.add(btnOrdenar);
 		
+		JLabel lblIntegrantesActuales = new JLabel("Integrantes Actuales");
+		lblIntegrantesActuales.setBounds(41, 267, 175, 14);
+		contentPane.add(lblIntegrantesActuales);
+		
+		
+
+		 
 		
 		
 		
 	}
+
 }
